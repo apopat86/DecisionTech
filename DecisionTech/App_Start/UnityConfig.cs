@@ -1,6 +1,8 @@
 using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using DecisionTech.Data.Contracts;
+using DecisionTech.Data.Repositories;
 
 namespace DecisionTech.App_Start
 {
@@ -36,7 +38,7 @@ namespace DecisionTech.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            // container.RegisterType<IProductRepository, ProductRepository>();
+             container.RegisterType<IDealRepository, DealRepository>();
         }
     }
 }
