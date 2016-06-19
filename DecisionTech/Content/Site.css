@@ -1,0 +1,63 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-default {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  height:80px;
+  line-height:80px;
+  border-bottom:2px solid #78459a;
+}
+.navbar-default .navbar-brand {
+  max-height:80px;
+  padding-right:100px;
+}
+
+.nav-pills a{
+    color:#78459a;
+}
+.nav-pills li.active a{
+    background-color:#78459a!important;
+}
+
+.breadcrumb a{
+    color:#78459a;
+}
+footer{
+    margin-top:50px;
+    padding:10px;
+    text-align:center;
+}
+
+
+.breadcrumb{
+    background:none;
+    margin:-10px 0 5px 0;
+    padding:0;
+}
+
+.table>tbody>tr.info>td, .table>tbody>tr.info>th, .table>tbody>tr>td.info, .table>tbody>tr>th.info, .table>tfoot>tr.info>td, .table>tfoot>tr.info>th, .table>tfoot>tr>td.info, .table>tfoot>tr>th.info, .table>thead>tr.info>td, .table>thead>tr.info>th, .table>thead>tr>td.info, .table>thead>tr>th.info {
+    background-color: #f7ecff;
+}

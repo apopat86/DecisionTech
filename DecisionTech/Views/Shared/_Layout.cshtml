@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Decision Tech</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("styles", required: false)
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a href="@Url.Action("Index")">
+                    <img src="~/Images/Decision-Tech-Full-Logo.png" class="navbar-brand" />
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+    @RenderBody()
+
+    <footer>
+        <hr />
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year - Amit Popat Technical Test</p>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/scripts")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section styles{
+    @Styles.Render("~/Content/home")
+}
+
+<div class="results-header">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Selected Package</li>
+        </ol>
+        <p class="fadeInLeft provider-logo">
+            <img src="http://bucket.cdndtl.co.uk/bc/ICONS_70x70/Fuelbroadband.png" alt="Fuel" />
+
+        </p>
+        <h1>Unlimited Fuel Broadband</h1>
+    </div>
+</div>
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="feature fadeInLeft">
+                <i class="fa fa-wifi"></i>
+                <h4>up to 17Mb<br />Truly Unlimited</h4>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="feature fadeIn">
+                <i class="fa fa-phone"></i>
+                <h4>Evening & Weekend calls inc.</h4>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="feature fadeIn">
+                <i class="fa fa-television"></i>
+                <h4>100 Channels</h4>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="feature fadeInRight">
+                <i class="fa fa-clock-o"></i>
+                <h4>12 Months Contract</h4>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <ul class="nav nav-pills col-md-12">
+            <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
+            <li><a data-toggle="tab" href="#costs">Costs</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="overview" class="tab-pane fade in active">
+                <div class="monthly-cost">Free</div>
+                <div>for 6 months</div>
+                <div>then £5.00 p/m</div>
+                <div>1st year cost £37.95</div>
+            </div>
+            <div id="costs" class="tab-pane fade">
+                <table class="table table-striped costs-table">
+                    <tr>
+                        <td><b>First 6 months</b></td>
+                        <td>£0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Thereafter</td>
+                        <td>£5.00</td>
+                    </tr>
+                    <tr>
+                        <td>Line Rental monthly cost</td>
+                        <td>£16.40</td>
+                    </tr>
+                    <tr>
+                        <td>Hardware</td>
+                        <td>£0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Activation</td>
+                        <td>£0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Delivery</td>
+                        <td>£7.95</td>
+                    </tr>
+                    <tr class="info">
+                        <td><b>First year cost</b></td>
+                        <td><b>£234.75</b></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/home")
+}
