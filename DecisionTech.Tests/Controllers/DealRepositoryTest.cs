@@ -18,13 +18,13 @@ namespace DecisionTech.Tests.Controllers
     {
       
         [Test]
-        public void GetDealReturnsJsonResult()
+        public void GetDealReturnsJson()
         {
             var repository = new DealRepository();
             var result = repository.GetDeal();
             
-            Assert.That(result, Is.InstanceOf<JsonResult>());
-
+            Assert.That(result, Is.InstanceOf<ContentResult>());
+            Assert.AreEqual(result.ContentType, "application/json");
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace DecisionTech.Tests.Controllers
         {
             var repository = new DealRepository();
             var result = repository.GetDeal();
-            var obj =JObject.Parse((string)result.Data);
+            var obj =JObject.Parse((string)result.Content);
             int val;
             Assert.IsTrue(int.TryParse((string)obj["bundleId"],out val));
 

@@ -13,7 +13,7 @@ namespace DecisionTech.Data.Repositories
 {
     public class DealRepository : IDealRepository
     {
-        public JsonResult GetDeal()
+        public ContentResult GetDeal()
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://api.broadbandchoices.co.uk/api/v2/bestbuys?Authorization=eb45afb3-a7c2-4d6d-a62a-bb9a29a4fb2e");
             request.ContentType = "application/json; charset=utf-8";
@@ -34,7 +34,7 @@ namespace DecisionTech.Data.Repositories
                 // Ensure we receive the bundles, and extract just the first deal
                 if (Bundles.totalBundles > 0)
                 {
-                    return new JsonResult(){Data= Bundles.bundleList[0].ToString()};
+                    return new ContentResult(){Content= JsonConvert.SerializeObject(Bundles.bundleList[0]), ContentType="application/json"  };
                 }
                 else
                     throw new Exception("There was an error whilst reading the deals");

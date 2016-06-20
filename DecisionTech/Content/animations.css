@@ -58,3 +58,12 @@
   animation-name: fadeIn;
   animation-duration: 3s;
 }
+
+.animate-show{
+     transition: all linear 0.5s;
+     opacity:0;
+}
+
+.animate-show.ng-show {
+  opacity: 1;
+}

@@ -47,20 +47,20 @@ namespace DecisionTech.Tests.Controllers
         }
 
         [Test]
-        public void GetDealReturnsJsonResult()
+        public void GetDealReturnsContentResult()
         {
             var controller = CreateController();
-            var bundle = new JsonResult();
+            var bundle = new ContentResult();
             mockRepository.Setup(repository => repository.GetDeal()).Returns(bundle);
 
             var viewResult = controller.GetDeal();
 
-            Assert.That(viewResult, Is.InstanceOf<JsonResult>());
+            Assert.That(viewResult, Is.InstanceOf<ContentResult>());
 
         }
 
         [Test]
-        public void GetDealReturnsJsonResultReturnsBadRequestStatusCodeOnError()
+        public void GetDealReturnsBadRequestStatusCodeOnError()
         {
             var controller = CreateController();
 

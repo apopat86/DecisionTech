@@ -4,106 +4,110 @@
 @section styles{
     @Styles.Render("~/Content/home")
 }
+<div ng-controller="dealCtrl as ctrl" ng-cloak >
+    <div class="loader" ng-show="isLoading && !hasError">
+        <img src="~/Images/loader.gif" /><br/>
+        Please wait while the package loads
+    </div>
+    <div class="error-message" ng-show="hasError">
+        Sorry, an error occurred<br/>
+        {{errorMessage}}
+    </div>
+    <div class="fadeIn" ng-hide="isLoading">
+        <div class="results-header">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Selected Package</li>
+                </ol>
+                <p class="fadeInLeft provider-logo">
+                    <img ng-src="{{ctrl.deal.providerLogoUrl}}" alt="{{ctrl.deal.providerName}}" />
 
-<div class="results-header">
-    <div class="container">
-        <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">Selected Package</li>
-        </ol>
-        <p class="fadeInLeft provider-logo">
-            <img src="http://bucket.cdndtl.co.uk/bc/ICONS_70x70/Fuelbroadband.png" alt="Fuel" />
+                </p>
+                <h1 class="fadeInLeft">{{ctrl.deal.providerName}}</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="feature fadeInLeft">
+                        <i class="fa fa-wifi"></i>
+                        <h4>up to {{ctrl.deal.downloadSpeedDisplay}}<br />{{ctrl.deal.downloadLimitDisplay}}</h4>
 
-        </p>
-        <h1>Unlimited Fuel Broadband</h1>
+                    </div>
+                </div>
+                <div class="col-md-3" ng-hide="ctrl.deal.calls===0">
+                    <div class="feature fadeIn">
+                        <i class="fa fa-phone"></i>
+                        <h4>{{ctrl.deal.callsDisplay}}</h4>
+
+                    </div>
+                </div>
+                <div class="col-md-3" ng-hide="ctrl.deal.channelCount===0">
+                    <div class="feature fadeIn">
+                        <i class="fa fa-television"></i>
+                        <h4>{{ctrl.deal.channelCount}} Channels</h4>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature fadeInRight">
+                        <i class="fa fa-clock-o"></i>
+                        <h4>{{ctrl.deal.contractLengthDisplay}} Contract</h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row deal-detail fadeInLeft">
+                <ul class="nav nav-pills col-md-12">
+                    <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
+                    <li><a data-toggle="tab" href="#costs">Costs</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="overview" class="tab-pane fade in active">
+                        <div>Costs without line rental</div>
+                        <div ng-repeat="cost in ctrl.deal.costsWithoutLineRental.costBreakdown">
+                            <div ng-class='isFirstCost($first)'>{{cost.value}}</div>
+                            <div>{{stripCharacters(cost.description)}}</div>
+                        </div>
+                        <div>1st year cost {{ctrl.deal.costsWithoutLineRental.firstYearCostDisplay}}</div>
+                    </div>
+                    <div id="costs" class="tab-pane fade">
+                        <table class="table table-striped costs-table">
+                            <tr ng-repeat="cost in ctrl.deal.costsWithLineRental.costBreakdown">
+                                <td>{{capitalizeAndStripCharacters(cost.description)}}</td>
+                                <td>{{cost.value}}</td>
+                            </tr>
+                            <tr>
+                                <td>Line Rental monthly cost</td>
+                                <td>{{ctrl.deal.costsWithLineRental.lineRentalDisplay}}</td>
+                            </tr>
+                            <tr ng-hide="ctrl.deal.costsWithLineRental.hardwareCost===0">
+                                <td>Hardware</td>
+                                <td>{{ctrl.deal.costsWithLineRental.hardwareCostDisplay}}</td>
+                            </tr>
+                            <tr>
+                                <td>Activation</td>
+                                <td>{{ctrl.deal.costsWithLineRental.installationCostDisplay}}</td>
+                            </tr>
+                            <tr>
+                                <td>Delivery</td>
+                                <td>{{ctrl.deal.costsWithLineRental.deliveryCostDisplay}}</td>
+                            </tr>
+                            <tr class="info">
+                                <td><b>First year cost</b></td>
+                                <td><b>{{ctrl.deal.costsWithLineRental.firstYearCostDisplay}}</b></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="container">
-
-
-    <div class="row">
-        <div class="col-md-3">
-            <div class="feature fadeInLeft">
-                <i class="fa fa-wifi"></i>
-                <h4>up to 17Mb<br />Truly Unlimited</h4>
-
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="feature fadeIn">
-                <i class="fa fa-phone"></i>
-                <h4>Evening & Weekend calls inc.</h4>
-
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="feature fadeIn">
-                <i class="fa fa-television"></i>
-                <h4>100 Channels</h4>
-
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="feature fadeInRight">
-                <i class="fa fa-clock-o"></i>
-                <h4>12 Months Contract</h4>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <ul class="nav nav-pills col-md-12">
-            <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
-            <li><a data-toggle="tab" href="#costs">Costs</a></li>
-        </ul>
-        <div class="tab-content">
-            <div id="overview" class="tab-pane fade in active">
-                <div class="monthly-cost">Free</div>
-                <div>for 6 months</div>
-                <div>then £5.00 p/m</div>
-                <div>1st year cost £37.95</div>
-            </div>
-            <div id="costs" class="tab-pane fade">
-                <table class="table table-striped costs-table">
-                    <tr>
-                        <td><b>First 6 months</b></td>
-                        <td>£0.00</td>
-                    </tr>
-                    <tr>
-                        <td>Thereafter</td>
-                        <td>£5.00</td>
-                    </tr>
-                    <tr>
-                        <td>Line Rental monthly cost</td>
-                        <td>£16.40</td>
-                    </tr>
-                    <tr>
-                        <td>Hardware</td>
-                        <td>£0.00</td>
-                    </tr>
-                    <tr>
-                        <td>Activation</td>
-                        <td>£0.00</td>
-                    </tr>
-                    <tr>
-                        <td>Delivery</td>
-                        <td>£7.95</td>
-                    </tr>
-                    <tr class="info">
-                        <td><b>First year cost</b></td>
-                        <td><b>£234.75</b></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-
 @section Scripts{
-    @Scripts.Render("~/bundles/home")
+   
 }

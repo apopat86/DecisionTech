@@ -9,6 +9,6 @@ namespace DecisionTech.Data.Contracts
 {
     public interface IDealRepository
     {
-        JsonResult GetDeal();
+        ContentResult GetDeal();
     }
 }

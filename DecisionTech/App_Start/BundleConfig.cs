@@ -12,12 +12,10 @@ namespace DecisionTech
                  "~/Scripts/jquery-{version}.js",
                        "~/Scripts/bootstrap.js",
                        "~/Scripts/respond.js",
-                       "~/Scripts/angular.js"));
+                       "~/Scripts/angular.js",
+                       "~/Scripts/app/home/dealCtrl.js",
+                       "~/Scripts/app/home/dealService.js"));
 
-
-
-            //bundles.Add(new ScriptBundle("~/bundles/home").Include(
-            //            "~/Scripts/app/main.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
